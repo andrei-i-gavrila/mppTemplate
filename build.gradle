@@ -29,6 +29,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('mysql:mysql-connector-java')
+    compile group: 'com.github.javafaker', name: 'javafaker', version: '0.15'
 
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')

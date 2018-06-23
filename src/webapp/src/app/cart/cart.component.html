@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-6">
+    <div class="row">
+      <div class="col"><h5 *ngIf="cart">Cart: {{cart.itemCount}} items</h5></div>
+      <div class="col"><a routerLink="/store/products">Shop more</a></div>
+    </div>
+    <div class="row">
+      <table class="table table-sm table-hover">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="cart">
+        <tr *ngFor="let product of cart.products">
+          <td>{{product.name}}</td>
+          <td><input type="text" [title]="'quantity' + product.productId" [value]="product.quantity"
+                     (change)="updateCart(product.productId, $event)" class="form-control"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="row mb-1">
+      <label for="email" class="col-8">Email</label>
+      <input *ngIf="cart" type="text" id="email" class="form-control col-4" [(value)]="cart.email"
+             (change)="updateOrder()">
+    </div>
+    <div class="row mb-1">
+      <label for="address" class="col-8">Address</label>
+      <input *ngIf="cart" type="text" id="address" class="form-control col-4" [(value)]="cart.address"
+             (change)="updateOrder()">
+    </div>
+    <div class="row mb-1">
+      <button class="btn btn-primary btn-block" (click)="submitOrder()">Submit order</button>
+    </div>
+  </div>
+</div>
